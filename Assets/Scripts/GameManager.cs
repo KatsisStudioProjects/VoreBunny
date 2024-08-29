@@ -15,6 +15,9 @@ namespace VoreBunny
         [SerializeField]
         private GameObject _win, _loose;
 
+        [SerializeField]
+        private GameObject _instructions;
+
         private GameObject _target;
 
         private const float RefTimer = 20f;
@@ -59,6 +62,7 @@ namespace VoreBunny
             if (value.phase == InputActionPhase.Started && !_didGameEnd)
             {
                 if (!_isActive) _isActive = true;
+                _instructions.SetActive(false);
 
                 _clickCount++;
                 if (_clickCount == RefClickCount)
