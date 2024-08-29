@@ -103,7 +103,7 @@ ScriptedImporter:
     customData: 
     rect:
       serializedVersion: 2
-      x: 693
+      x: 711
       y: 2180
       width: 592
       height: 1080
@@ -115,7 +115,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 693, y: 2180}
+    uvTransform: {x: 711, y: 2180}
     spritePosition: {x: 644, y: 0}
   - name: Layer 7
     originalName: 
@@ -139,7 +139,7 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 4, y: 4}
     spritePosition: {x: 0, y: 0}
-  - name: Layer 2
+  - name: Layer 1
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -149,9 +149,9 @@ ScriptedImporter:
       serializedVersion: 2
       x: 4
       y: 2180
-      width: 681
-      height: 995
-    spriteID: 5ec549556c49e814dbb506e62d080d7d
+      width: 699
+      height: 996
+    spriteID: 781b33e92f1ba8342a6dcc6f608edfac
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -160,7 +160,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 4, y: 2180}
-    spritePosition: {x: 615, y: 0}
+    spritePosition: {x: 600, y: 0}
   - name: Paper
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -238,7 +238,7 @@ ScriptedImporter:
     parentIndex: 0
     spriteID: 156908f3bf6fb974f91e5b79337acf27
     layerID: -7500615
-    mosaicPosition: {x: 693, y: 2180}
+    mosaicPosition: {x: 711, y: 2180}
     flatten: 0
     isImported: 1
     isVisible: 1
@@ -252,6 +252,16 @@ ScriptedImporter:
     flatten: 0
     isImported: 1
     isVisible: 1
+  - name: Layer 1
+    spriteName: Layer 1
+    isGroup: 0
+    parentIndex: 0
+    spriteID: 781b33e92f1ba8342a6dcc6f608edfac
+    layerID: -7500616
+    mosaicPosition: {x: 4, y: 2180}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
   - name: Layer 2
     spriteName: Layer 2
     isGroup: 0
@@ -260,8 +270,8 @@ ScriptedImporter:
     layerID: -7500619
     mosaicPosition: {x: 4, y: 2180}
     flatten: 0
-    isImported: 1
-    isVisible: 1
+    isImported: 0
+    isVisible: 0
   - name: Paper
     spriteName: Paper
     isGroup: 0
