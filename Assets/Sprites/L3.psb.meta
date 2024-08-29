@@ -103,7 +103,7 @@ ScriptedImporter:
     customData: 
     rect:
       serializedVersion: 2
-      x: 537
+      x: 1090
       y: 2180
       width: 498
       height: 1031
@@ -115,7 +115,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 537, y: 2180}
+    uvTransform: {x: 1090, y: 2180}
     spritePosition: {x: 674, y: 0}
   - name: Layer 9
     originalName: 
@@ -139,7 +139,7 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 4, y: 4}
     spritePosition: {x: 0, y: 0}
-  - name: Layer 3
+  - name: Lineart
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -148,6 +148,28 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 4
+      y: 2180
+      width: 545
+      height: 1080
+    spriteID: a14b4d939e544b0408fd87b802023873
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 2180}
+    spritePosition: {x: 650, y: 0}
+  - name: Layer 3
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 557
       y: 2180
       width: 525
       height: 1080
@@ -159,7 +181,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 2180}
+    uvTransform: {x: 557, y: 2180}
     spritePosition: {x: 646, y: 0}
   - name: Paper
     originalName: 
@@ -238,7 +260,7 @@ ScriptedImporter:
     parentIndex: 0
     spriteID: 2662c715e2361f749b891dec4f57d14d
     layerID: -7500609
-    mosaicPosition: {x: 537, y: 2180}
+    mosaicPosition: {x: 1090, y: 2180}
     flatten: 0
     isImported: 1
     isVisible: 1
@@ -252,13 +274,23 @@ ScriptedImporter:
     flatten: 0
     isImported: 1
     isVisible: 1
+  - name: Lineart
+    spriteName: Lineart
+    isGroup: 0
+    parentIndex: 0
+    spriteID: a14b4d939e544b0408fd87b802023873
+    layerID: -420730663
+    mosaicPosition: {x: 4, y: 2180}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
   - name: Layer 3
     spriteName: Layer 3
     isGroup: 0
     parentIndex: 0
     spriteID: b29867628466ee442a9b99f467577820
     layerID: -7500618
-    mosaicPosition: {x: 4, y: 2180}
+    mosaicPosition: {x: 557, y: 2180}
     flatten: 0
     isImported: 1
     isVisible: 1
