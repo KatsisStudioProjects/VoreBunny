@@ -95,7 +95,29 @@ ScriptedImporter:
     spritePosition: {x: 0, y: 0}
   multiSpriteImportData: []
   layeredSpriteImportData:
-  - name: Layer 4
+  - name: Layer 2
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 752
+      y: 1092
+      width: 434
+      height: 357
+    spriteID: 0f8a98e0656f9904dbaba89fba1e2e18
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 752, y: 1092}
+    spritePosition: {x: 746, y: 523}
+  - name: Layer 1
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -104,10 +126,10 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 4
-      y: 2180
-      width: 738
-      height: 1080
-    spriteID: d78d15e96e056af47aa6114c966d6472
+      y: 1092
+      width: 740
+      height: 940
+    spriteID: d32d515eceab3c842bcd3c9e6bfb7be8
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -115,9 +137,9 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 2180}
-    spritePosition: {x: 560, y: 0}
-  - name: Layer 5
+    uvTransform: {x: 4, y: 1092}
+    spritePosition: {x: 565, y: 92}
+  - name: Paper
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -129,50 +151,6 @@ ScriptedImporter:
       y: 4
       width: 1920
       height: 1080
-    spriteID: 9c14c6cd596f83d41b93b300d6a84a9a
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 4, y: 4}
-    spritePosition: {x: 0, y: 0}
-  - name: Layer 1
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    customData: 
-    rect:
-      serializedVersion: 2
-      x: 750
-      y: 2180
-      width: 740
-      height: 940
-    spriteID: d32d515eceab3c842bcd3c9e6bfb7be8
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 750, y: 2180}
-    spritePosition: {x: 565, y: 92}
-  - name: Paper
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    customData: 
-    rect:
-      serializedVersion: 2
-      x: 4
-      y: 1092
-      width: 1920
-      height: 1080
     spriteID: fdb0f5e75a7426f4c8721c54020787f8
     spriteBone: []
     spriteOutline: []
@@ -181,7 +159,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 1092}
+    uvTransform: {x: 4, y: 4}
     spritePosition: {x: 0, y: 0}
   spriteImportData: []
   rigSpriteImportData: []
@@ -240,8 +218,8 @@ ScriptedImporter:
     layerID: -7500613
     mosaicPosition: {x: 4, y: 2180}
     flatten: 0
-    isImported: 1
-    isVisible: 1
+    isImported: 0
+    isVisible: 0
   - name: Layer 5
     spriteName: Layer 5
     isGroup: 0
@@ -249,6 +227,16 @@ ScriptedImporter:
     spriteID: 9c14c6cd596f83d41b93b300d6a84a9a
     layerID: -7500612
     mosaicPosition: {x: 4, y: 4}
+    flatten: 0
+    isImported: 0
+    isVisible: 0
+  - name: Layer 2
+    spriteName: Layer 2
+    isGroup: 0
+    parentIndex: 0
+    spriteID: 0f8a98e0656f9904dbaba89fba1e2e18
+    layerID: -7500619
+    mosaicPosition: {x: 752, y: 1092}
     flatten: 0
     isImported: 1
     isVisible: 1
@@ -258,7 +246,7 @@ ScriptedImporter:
     parentIndex: 0
     spriteID: d32d515eceab3c842bcd3c9e6bfb7be8
     layerID: -7500616
-    mosaicPosition: {x: 750, y: 2180}
+    mosaicPosition: {x: 4, y: 1092}
     flatten: 0
     isImported: 1
     isVisible: 1
@@ -268,7 +256,7 @@ ScriptedImporter:
     parentIndex: -1
     spriteID: fdb0f5e75a7426f4c8721c54020787f8
     layerID: -1779142660
-    mosaicPosition: {x: 4, y: 1092}
+    mosaicPosition: {x: 4, y: 4}
     flatten: 0
     isImported: 1
     isVisible: 1
