@@ -1,0 +1,21 @@
+{
+	"Version": 3,
+	"Parameters": [
+		{
+			"Id": "belly",
+			"GroupId": "",
+			"Name": "Belly"
+		}
+	],
+	"ParameterGroups": [],
+	"Parts": [
+		{
+			"Id": "Part",
+			"Name": "Folder 1"
+		},
+		{
+			"Id": "I1",
+			"Name": "I1"
+		}
+	]
+}
