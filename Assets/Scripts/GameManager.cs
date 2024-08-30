@@ -18,6 +18,9 @@ namespace VoreBunny
         [SerializeField]
         private GameObject _instructions;
 
+        [SerializeField]
+        private RectTransform _progressBar;
+
         private GameObject _target;
 
         private const float RefTimer = 20f;
@@ -65,6 +68,8 @@ namespace VoreBunny
                 _instructions.SetActive(false);
 
                 _clickCount++;
+
+                _progressBar.localScale = new(1f - ((_progressIndex * RefClickCount + _clickCount) / (float)(RefClickCount * _progress.Length)), 1f, 1f);
                 if (_clickCount == RefClickCount)
                 {
                     _clickCount = 0;
