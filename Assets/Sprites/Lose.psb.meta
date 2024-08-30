@@ -95,6 +95,28 @@ ScriptedImporter:
     spritePosition: {x: 0, y: 0}
   multiSpriteImportData: []
   layeredSpriteImportData:
+  - name: Layer 1
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 2180
+      width: 1768
+      height: 1080
+    spriteID: 6e07e275fc84aa0429043f94e74f06f7
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 2180}
+    spritePosition: {x: 78, y: 0}
   - name: Lose
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -107,7 +129,7 @@ ScriptedImporter:
       y: 1092
       width: 1768
       height: 1080
-    spriteID: 6e07e275fc84aa0429043f94e74f06f7
+    spriteID: 5966aea7f14f4f444bdb66505d16fcb2
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -214,16 +236,26 @@ ScriptedImporter:
   resliceFromLayer: 0
   pSDLayerImportSetting: []
   psdLayers:
-  - name: Lose
-    spriteName: Lose
+  - name: Layer 1
+    spriteName: Layer 1
     isGroup: 0
     parentIndex: -1
     spriteID: 6e07e275fc84aa0429043f94e74f06f7
     layerID: 0
-    mosaicPosition: {x: 4, y: 1092}
+    mosaicPosition: {x: 4, y: 2180}
     flatten: 0
     isImported: 1
     isVisible: 1
+  - name: Lose
+    spriteName: Lose
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 5966aea7f14f4f444bdb66505d16fcb2
+    layerID: 1414246213
+    mosaicPosition: {x: 4, y: 1092}
+    flatten: 0
+    isImported: 1
+    isVisible: 0
   - name: Paper
     spriteName: Paper
     isGroup: 0
