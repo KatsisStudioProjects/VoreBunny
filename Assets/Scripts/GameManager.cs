@@ -47,11 +47,11 @@ namespace VoreBunny
             UpdateUI();
         }
 
-        private void Update()
+        public void IncreaseAnimValue(float mult)
         {
             if (_animGoUp)
             {
-                _animValue += Time.deltaTime;
+                _animValue += mult;
                 if (_animValue > 1f)
                 {
                     _animValue = 1f;
@@ -60,13 +60,18 @@ namespace VoreBunny
             }
             else
             {
-                _animValue -= Time.deltaTime;
+                _animValue -= mult;
                 if (_animValue < -1f)
                 {
                     _animValue = -1f;
                     _animGoUp = true;
                 }
             }
+        }
+
+        private void Update()
+        {
+            IncreaseAnimValue(Time.deltaTime);
 
             if (_isActive && !_didGameEnd)
             {
@@ -99,6 +104,7 @@ namespace VoreBunny
                 _instructions.SetActive(false);
 
                 _clickCount++;
+                IncreaseAnimValue(.1f);
 
                 _progressBar.localScale = new(1f - ((_progressIndex * RefClickCount + _clickCount) / (float)(RefClickCount * _progress.Length)), 1f, 1f);
                 if (_clickCount == RefClickCount)
