@@ -100,7 +100,7 @@ namespace VoreBunny
                         Destroy(_target);
                         _target = Instantiate(_loose, Vector2.zero, Quaternion.identity);
                         _param = _target.GetComponentInChildren<CubismParameter>();
-                        foreach (var a in _defeatAudio) _source.PlayOneShot(a, 3f);
+                        if (BGMManager.UseSFX) foreach (var a in _defeatAudio) _source.PlayOneShot(a, 3f);
                     }));
                     StartCoroutine(AllowReset());
                 }
@@ -112,7 +112,7 @@ namespace VoreBunny
             {
                 var index = Random.Range(1, _clipsL.Count);
                 var c = _clipsL[index];
-                _source.PlayOneShot(c, 3f);
+                if (BGMManager.UseSFX) _source.PlayOneShot(c, 3f);
                 _clipsL.RemoveAt(index);
                 _clipsL.Insert(0, c);
                 _audioTimer = Random.Range(1f, 3f);
@@ -133,7 +133,7 @@ namespace VoreBunny
                 {
                     _animValue = 1f;
                     _animGoUp = false;
-                    if (!_didGameEnd) _source.PlayOneShot(_tummyNoises[Random.Range(0, _tummyNoises.Length)], .75f);
+                    if (BGMManager.UseSFX && !_didGameEnd) _source.PlayOneShot(_tummyNoises[Random.Range(0, _tummyNoises.Length)], .75f);
                 }
             }
             else
@@ -143,7 +143,7 @@ namespace VoreBunny
                 {
                     _animValue = -1f;
                     _animGoUp = true;
-                    if (!_didGameEnd) _source.PlayOneShot(_tummyNoises[Random.Range(0, _tummyNoises.Length)], .75f);
+                    if (BGMManager.UseSFX && !_didGameEnd) _source.PlayOneShot(_tummyNoises[Random.Range(0, _tummyNoises.Length)], .75f);
                 }
             }
         }
@@ -193,7 +193,7 @@ namespace VoreBunny
                         {
                             if (_progressIndex == _progress.Length)
                             {
-                                foreach (var a in _victoryAudio) _source.PlayOneShot(a, 3f);
+                                if (BGMManager.UseSFX) foreach (var a in _victoryAudio) _source.PlayOneShot(a, 3f);
                                 _victoryText.text = "You escaped!";
                             }
                             Destroy(_target);
