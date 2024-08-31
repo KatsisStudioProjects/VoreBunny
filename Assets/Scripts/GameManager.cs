@@ -1,3 +1,5 @@
+using Live2D.Cubism.Core;
+using Live2D.Cubism.Framework;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -33,15 +35,39 @@ namespace VoreBunny
 
         private bool _didGameEnd;
 
+        private CubismParameter _param;
+        private float _animValue;
+        private bool _animGoUp;
+
         private void Awake()
         {
             _timer = RefTimer;
             _target = Instantiate(_progress[_progressIndex], Vector2.zero, Quaternion.identity);
+            _param = _target.GetComponentInChildren<CubismParameter>();
             UpdateUI();
         }
 
         private void Update()
         {
+            if (_animGoUp)
+            {
+                _animValue += Time.deltaTime;
+                if (_animValue > 1f)
+                {
+                    _animValue = 1f;
+                    _animGoUp = false;
+                }
+            }
+            else
+            {
+                _animValue -= Time.deltaTime;
+                if (_animValue < -1f)
+                {
+                    _animValue = -1f;
+                    _animGoUp = true;
+                }
+            }
+
             if (_isActive && !_didGameEnd)
             {
                 _timer -= Time.deltaTime;
@@ -53,6 +79,11 @@ namespace VoreBunny
                 }
                 UpdateUI();
             }
+        }
+
+        private void LateUpdate()
+        {
+            _param.Value = _animValue;
         }
 
         private void UpdateUI()
@@ -88,6 +119,8 @@ namespace VoreBunny
                         t = _progress[_progressIndex];
                     }
                     _target = Instantiate(t, Vector2.zero, Quaternion.identity);
+                    _param = _target.GetComponentInChildren<CubismParameter>();
+                    _animValue = 0f;
                 }
             }
         }
