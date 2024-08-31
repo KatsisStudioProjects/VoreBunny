@@ -977,7 +977,7 @@ MonoBehaviour:
   _modelScreenColor: {r: 0, g: 0, b: 0, a: 0}
   _sortingLayerId: 0
   _sortingMode: 0
-  _sortingOrder: 1
+  _sortingOrder: 0
   CameraToFace: {fileID: 0}
   _drawOrderHandler: {fileID: 0}
   _opacityHandler: {fileID: 0}
@@ -996,7 +996,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 967223d908bf07b4f90945995bdca68f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maskTexture: {fileID: 11400000, guid: 16bf142754640ab4487bb625c30931fd, type: 2}
+  _maskTexture: {fileID: 0}
 --- !u!114 &6527548770248190353
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1930,14 +1930,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _childDrawableRenderers:
-  - {fileID: 2743364238100301247}
-  - {fileID: 8283383336867117321}
-  - {fileID: 3528829648055981257}
-  - {fileID: 7459568281329185470}
-  - {fileID: 3117044345528264495}
-  - {fileID: 3746109193950440487}
-  - {fileID: 6128476268269043538}
-  - {fileID: 7868646741943362588}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   _childParts: []
   _isOverwrittenPartMultiplyColors: 0
   _isOverwrittenPartScreenColors: 0
@@ -2018,11 +2018,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _childDrawableRenderers:
-  - {fileID: 8737451627200599883}
-  - {fileID: 5028412235152484239}
-  - {fileID: 6415908001722773522}
-  - {fileID: 2919373636875339161}
-  - {fileID: 5695768346060071123}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   _childParts:
   - {fileID: 0}
   - {fileID: 0}
@@ -3002,10 +3002,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _childDrawableRenderers:
-  - {fileID: 1500239402009169122}
-  - {fileID: 3159456237749551147}
-  - {fileID: 9021465089077263259}
-  - {fileID: 5362466433981853139}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   _childParts: []
   _isOverwrittenPartMultiplyColors: 0
   _isOverwrittenPartScreenColors: 0
@@ -3336,10 +3336,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _childDrawableRenderers:
-  - {fileID: 3226980983031889174}
-  - {fileID: 3182582352611500383}
-  - {fileID: 4748043957629236502}
-  - {fileID: 9035842338487714724}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   _childParts: []
   _isOverwrittenPartMultiplyColors: 0
   _isOverwrittenPartScreenColors: 0

@@ -22,6 +22,17 @@ namespace VoreBunny
         [SerializeField]
         private RectTransform _progressBar;
 
+        [SerializeField]
+        private GameObject _canvas;
+
+        [SerializeField]
+        private TMP_Text _victoryText;
+
+        [SerializeField]
+        private AudioClip[] _tummyNoises;
+
+        private AudioSource _source;
+
         private GameObject _target;
 
         private const float RefTimer = 20f;
@@ -38,8 +49,11 @@ namespace VoreBunny
         private float _animValue;
         private bool _animGoUp;
 
+        private int _gotLastClick;
+
         private void Awake()
         {
+            _source = GetComponent<AudioSource>();
             _timer = RefTimer;
             _target = Instantiate(_progress[_progressIndex], Vector2.zero, Quaternion.identity);
             _param = _target.GetComponentInChildren<CubismParameter>();
@@ -55,6 +69,7 @@ namespace VoreBunny
                 {
                     _animValue = 1f;
                     _animGoUp = false;
+                    _source.PlayOneShot(_tummyNoises[Random.Range(0, _tummyNoises.Length)]);
                 }
             }
             else
@@ -64,13 +79,15 @@ namespace VoreBunny
                 {
                     _animValue = -1f;
                     _animGoUp = true;
+                    _source.PlayOneShot(_tummyNoises[Random.Range(0, _tummyNoises.Length)]);
                 }
             }
         }
 
         private void Update()
         {
-            IncreaseAnimValue(Time.deltaTime);
+            IncreaseAnimValue(Time.deltaTime / 2f * (_gotLastClick > 0 ? 3f : 1f));
+            if (_gotLastClick > 0) _gotLastClick--;
 
             if (_isActive && !_didGameEnd)
             {
@@ -80,6 +97,8 @@ namespace VoreBunny
                     Destroy(_target);
                     _target = Instantiate(_loose, Vector2.zero, Quaternion.identity);
                     _didGameEnd = true;
+                    _canvas.SetActive(false);
+                    _victoryText.text = "You got digested";
                 }
                 UpdateUI();
             }
@@ -102,7 +121,7 @@ namespace VoreBunny
                 if (!_isActive) _isActive = true;
 
                 _clickCount++;
-                IncreaseAnimValue(.1f);
+                _gotLastClick = 10;
 
                 _progressBar.localScale = new(1f - ((_progressIndex * RefClickCount + _clickCount) / (float)(RefClickCount * _progress.Length)), 1f, 1f);
                 if (_clickCount == RefClickCount)
@@ -117,6 +136,8 @@ namespace VoreBunny
                     {
                         t = _win;
                         _didGameEnd = true;
+                        _canvas.SetActive(false);
+                        _victoryText.text = "You escaped!";
                     }
                     else
                     {
