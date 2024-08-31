@@ -3,6 +3,7 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 namespace VoreBunny
 {
@@ -54,6 +55,8 @@ namespace VoreBunny
         private bool _animGoUp;
 
         private int _gotLastClick;
+
+        private bool _canReset;
 
         private void Awake()
         {
@@ -107,6 +110,7 @@ namespace VoreBunny
                         _target = Instantiate(_loose, Vector2.zero, Quaternion.identity);
                         _param = _target.GetComponentInChildren<CubismParameter>();
                     }));
+                    StartCoroutine(AllowReset());
                 }
                 UpdateUI();
             }
@@ -126,38 +130,46 @@ namespace VoreBunny
         {
             if (value.phase == InputActionPhase.Started && !_didGameEnd)
             {
-                if (!_isActive) _isActive = true;
-
-                _clickCount++;
-                _gotLastClick = 10;
-
-                _progressBar.localScale = new(1f - ((_progressIndex * RefClickCount + _clickCount) / (float)(RefClickCount * _progress.Length)), 1f, 1f);
-                if (_clickCount == RefClickCount)
+                if (_canReset)
                 {
-                    _clickCount = 0;
-                    _progressIndex++;
-                    _timer += 10f;
+                    SceneManager.LoadScene("Main");
+                }
+                else
+                {
+                    if (!_isActive) _isActive = true;
 
-                    _anim.SetTrigger("Play");
-                    GameObject t;
-                    if (_progressIndex == _progress.Length)
+                    _clickCount++;
+                    _gotLastClick = 10;
+
+                    _progressBar.localScale = new(1f - ((_progressIndex * RefClickCount + _clickCount) / (float)(RefClickCount * _progress.Length)), 1f, 1f);
+                    if (_clickCount == RefClickCount)
                     {
-                        t = _win;
-                        _didGameEnd = true;
-                        _canvas.SetActive(false);
-                        _victoryText.text = "You escaped!";
+                        _clickCount = 0;
+                        _progressIndex++;
+                        _timer += 10f;
+
+                        _anim.SetTrigger("Play");
+                        GameObject t;
+                        if (_progressIndex == _progress.Length)
+                        {
+                            t = _win;
+                            _didGameEnd = true;
+                            _canvas.SetActive(false);
+                            _victoryText.text = "You escaped!";
+                            StartCoroutine(AllowReset());
+                        }
+                        else
+                        {
+                            t = _progress[_progressIndex];
+                        }
+                        _animValue = 0f;
+                        StartCoroutine(WaitAndDo(.8f, () =>
+                        {
+                            Destroy(_target);
+                            _target = Instantiate(t, Vector2.zero, Quaternion.identity);
+                            _param = _target.GetComponentInChildren<CubismParameter>();
+                        }));
                     }
-                    else
-                    {
-                        t = _progress[_progressIndex];
-                    }
-                    _animValue = 0f;
-                    StartCoroutine(WaitAndDo(.8f, () =>
-                    {
-                        Destroy(_target);
-                        _target = Instantiate(t, Vector2.zero, Quaternion.identity);
-                        _param = _target.GetComponentInChildren<CubismParameter>();
-                    }));
                 }
             }
         }
@@ -166,6 +178,12 @@ namespace VoreBunny
         {
             yield return new WaitForSeconds(time);
             callback();
+        }
+
+        private IEnumerator AllowReset()
+        {
+            yield return new WaitForSeconds(2f);
+            _canReset = true;
         }
     }
 }
