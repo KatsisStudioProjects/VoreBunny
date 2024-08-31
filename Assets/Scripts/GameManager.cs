@@ -1,7 +1,9 @@
 using Live2D.Cubism.Core;
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 namespace VoreBunny
 {
@@ -31,6 +33,9 @@ namespace VoreBunny
         [SerializeField]
         private AudioClip[] _tummyNoises;
 
+        [SerializeField]
+        private Animator _anim;
+
         private AudioSource _source;
 
         private GameObject _target;
@@ -51,6 +56,8 @@ namespace VoreBunny
 
         private int _gotLastClick;
 
+        private bool _canReset;
+
         private void Awake()
         {
             _source = GetComponent<AudioSource>();
@@ -69,7 +76,7 @@ namespace VoreBunny
                 {
                     _animValue = 1f;
                     _animGoUp = false;
-                    _source.PlayOneShot(_tummyNoises[Random.Range(0, _tummyNoises.Length)]);
+                    if (!_didGameEnd) _source.PlayOneShot(_tummyNoises[Random.Range(0, _tummyNoises.Length)]);
                 }
             }
             else
@@ -79,7 +86,7 @@ namespace VoreBunny
                 {
                     _animValue = -1f;
                     _animGoUp = true;
-                    _source.PlayOneShot(_tummyNoises[Random.Range(0, _tummyNoises.Length)]);
+                    if (!_didGameEnd) _source.PlayOneShot(_tummyNoises[Random.Range(0, _tummyNoises.Length)]);
                 }
             }
         }
@@ -94,11 +101,16 @@ namespace VoreBunny
                 _timer -= Time.deltaTime;
                 if (_timer <= 0f)
                 {
-                    Destroy(_target);
-                    _target = Instantiate(_loose, Vector2.zero, Quaternion.identity);
                     _didGameEnd = true;
                     _canvas.SetActive(false);
-                    _victoryText.text = "You got digested";
+                    StartCoroutine(WaitAndDo(.8f, () =>
+                    {
+                        _victoryText.text = "You got digested";
+                        Destroy(_target);
+                        _target = Instantiate(_loose, Vector2.zero, Quaternion.identity);
+                        _param = _target.GetComponentInChildren<CubismParameter>();
+                    }));
+                    StartCoroutine(AllowReset());
                 }
                 UpdateUI();
             }
@@ -116,38 +128,62 @@ namespace VoreBunny
 
         public void OnAction(InputAction.CallbackContext value)
         {
-            if (value.phase == InputActionPhase.Started && !_didGameEnd)
+            if (value.phase == InputActionPhase.Started)
             {
-                if (!_isActive) _isActive = true;
-
-                _clickCount++;
-                _gotLastClick = 10;
-
-                _progressBar.localScale = new(1f - ((_progressIndex * RefClickCount + _clickCount) / (float)(RefClickCount * _progress.Length)), 1f, 1f);
-                if (_clickCount == RefClickCount)
+                if (_canReset)
                 {
-                    _clickCount = 0;
-                    _progressIndex++;
-                    _timer += 10f;
+                    SceneManager.LoadScene("Main");
+                }
+                else if (!_didGameEnd)
+                {
+                    if (!_isActive) _isActive = true;
 
-                    Destroy(_target);
-                    GameObject t;
-                    if (_progressIndex == _progress.Length)
+                    _clickCount++;
+                    _gotLastClick = 10;
+
+                    _progressBar.localScale = new(1f - ((_progressIndex * RefClickCount + _clickCount) / (float)(RefClickCount * _progress.Length)), 1f, 1f);
+                    if (_clickCount == RefClickCount)
                     {
-                        t = _win;
-                        _didGameEnd = true;
-                        _canvas.SetActive(false);
-                        _victoryText.text = "You escaped!";
+                        _clickCount = 0;
+                        _progressIndex++;
+                        _timer += 10f;
+
+                        _anim.SetTrigger("Play");
+                        GameObject t;
+                        if (_progressIndex == _progress.Length)
+                        {
+                            t = _win;
+                            _didGameEnd = true;
+                            _canvas.SetActive(false);
+                            StartCoroutine(AllowReset());
+                        }
+                        else
+                        {
+                            t = _progress[_progressIndex];
+                        }
+                        _animValue = 0f;
+                        StartCoroutine(WaitAndDo(.8f, () =>
+                        {
+                            if (_progressIndex == _progress.Length) _victoryText.text = "You escaped!";
+                            Destroy(_target);
+                            _target = Instantiate(t, Vector2.zero, Quaternion.identity);
+                            _param = _target.GetComponentInChildren<CubismParameter>();
+                        }));
                     }
-                    else
-                    {
-                        t = _progress[_progressIndex];
-                    }
-                    _target = Instantiate(t, Vector2.zero, Quaternion.identity);
-                    _param = _target.GetComponentInChildren<CubismParameter>();
-                    _animValue = 0f;
                 }
             }
+        }
+
+        private IEnumerator WaitAndDo(float time, System.Action callback)
+        {
+            yield return new WaitForSeconds(time);
+            callback();
+        }
+
+        private IEnumerator AllowReset()
+        {
+            yield return new WaitForSeconds(2f);
+            _canReset = true;
         }
     }
 }
