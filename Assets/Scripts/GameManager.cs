@@ -83,7 +83,7 @@ namespace VoreBunny
 
         private void Update()
         {
-            IncreaseAnimValue(Time.deltaTime / 2f * (_gotLastClick > 0 ? 3f : 1f));
+            IncreaseAnimValue(Time.deltaTime / 2f * (_gotLastClick > 0 ? 2f : 1f));
             if (_gotLastClick > 0) _gotLastClick--;
 
             if (_isActive && !_didGameEnd)
