@@ -1,4 +1,5 @@
 using Live2D.Cubism.Core;
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -30,6 +31,9 @@ namespace VoreBunny
 
         [SerializeField]
         private AudioClip[] _tummyNoises;
+
+        [SerializeField]
+        private Animator _anim;
 
         private AudioSource _source;
 
@@ -94,11 +98,15 @@ namespace VoreBunny
                 _timer -= Time.deltaTime;
                 if (_timer <= 0f)
                 {
-                    Destroy(_target);
-                    _target = Instantiate(_loose, Vector2.zero, Quaternion.identity);
                     _didGameEnd = true;
                     _canvas.SetActive(false);
                     _victoryText.text = "You got digested";
+                    StartCoroutine(WaitAndDo(.8f, () =>
+                    {
+                        Destroy(_target);
+                        _target = Instantiate(_loose, Vector2.zero, Quaternion.identity);
+                        _param = _target.GetComponentInChildren<CubismParameter>();
+                    }));
                 }
                 UpdateUI();
             }
@@ -130,7 +138,7 @@ namespace VoreBunny
                     _progressIndex++;
                     _timer += 10f;
 
-                    Destroy(_target);
+                    _anim.SetTrigger("Play");
                     GameObject t;
                     if (_progressIndex == _progress.Length)
                     {
@@ -143,11 +151,21 @@ namespace VoreBunny
                     {
                         t = _progress[_progressIndex];
                     }
-                    _target = Instantiate(t, Vector2.zero, Quaternion.identity);
-                    _param = _target.GetComponentInChildren<CubismParameter>();
                     _animValue = 0f;
+                    StartCoroutine(WaitAndDo(.8f, () =>
+                    {
+                        Destroy(_target);
+                        _target = Instantiate(t, Vector2.zero, Quaternion.identity);
+                        _param = _target.GetComponentInChildren<CubismParameter>();
+                    }));
                 }
             }
+        }
+
+        private IEnumerator WaitAndDo(float time, System.Action callback)
+        {
+            yield return new WaitForSeconds(time);
+            callback();
         }
     }
 }
