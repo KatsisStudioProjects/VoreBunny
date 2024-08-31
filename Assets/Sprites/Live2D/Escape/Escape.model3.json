@@ -1,0 +1,10 @@
+{
+	"Version": 3,
+	"FileReferences": {
+		"Moc": "Escape.moc3",
+		"Textures": [
+			"Escape.4096/texture_00.png"
+		],
+		"DisplayInfo": "Escape.cdi3.json"
+	}
+}

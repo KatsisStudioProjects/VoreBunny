@@ -1,0 +1,10 @@
+{
+	"Version": 3,
+	"FileReferences": {
+		"Moc": "Lose.moc3",
+		"Textures": [
+			"Lose.4096/texture_00.png"
+		],
+		"DisplayInfo": "Lose.cdi3.json"
+	}
+}

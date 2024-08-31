@@ -1,0 +1,21 @@
+{
+	"Version": 3,
+	"Parameters": [
+		{
+			"Id": "Param",
+			"GroupId": "",
+			"Name": "Movement"
+		}
+	],
+	"ParameterGroups": [],
+	"Parts": [
+		{
+			"Id": "Part",
+			"Name": "Folder 1"
+		},
+		{
+			"Id": "I3",
+			"Name": "I3"
+		}
+	]
+}

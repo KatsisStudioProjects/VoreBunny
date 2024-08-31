@@ -2,9 +2,9 @@
 	"Version": 3,
 	"Parameters": [
 		{
-			"Id": "belly",
+			"Id": "Param",
 			"GroupId": "",
-			"Name": "Belly"
+			"Name": "belly"
 		}
 	],
 	"ParameterGroups": [],
