@@ -29,8 +29,8 @@ namespace VoreBunny
 
         public void ToggleBgm()
         {
-            _bgm.volume = _bgm.volume == 0 ? 1f : 0f;
-            _btnBgm.sprite = _bgm.volume == 1f ? _bgmOn : _bgmOff;
+            _bgm.volume = _bgm.volume == 0 ? 0.15f : 0f;
+            _btnBgm.sprite = _bgm.volume == 0f ? _bgmOff : _bgmOn;
         }
     }
 }
