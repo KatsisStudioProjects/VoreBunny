@@ -93,6 +93,7 @@ namespace VoreBunny
                 {
                     _didGameEnd = true;
                     _canvas.SetActive(false);
+                    _anim.SetTrigger("Play");
                     StartCoroutine(WaitAndDo(.8f, () =>
                     {
                         _victoryText.text = "You got digested";
@@ -132,7 +133,7 @@ namespace VoreBunny
                 {
                     _animValue = 1f;
                     _animGoUp = false;
-                    if (!_didGameEnd) _source.PlayOneShot(_tummyNoises[Random.Range(0, _tummyNoises.Length)]);
+                    if (!_didGameEnd) _source.PlayOneShot(_tummyNoises[Random.Range(0, _tummyNoises.Length)], .75f);
                 }
             }
             else
@@ -142,7 +143,7 @@ namespace VoreBunny
                 {
                     _animValue = -1f;
                     _animGoUp = true;
-                    if (!_didGameEnd) _source.PlayOneShot(_tummyNoises[Random.Range(0, _tummyNoises.Length)]);
+                    if (!_didGameEnd) _source.PlayOneShot(_tummyNoises[Random.Range(0, _tummyNoises.Length)], .75f);
                 }
             }
         }
