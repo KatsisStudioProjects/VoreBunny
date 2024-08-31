@@ -1,3 +1,5 @@
+using Live2D.Cubism.Core;
+using Live2D.Cubism.Framework;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -33,15 +35,44 @@ namespace VoreBunny
 
         private bool _didGameEnd;
 
+        private CubismParameter _param;
+        private float _animValue;
+        private bool _animGoUp;
+
         private void Awake()
         {
             _timer = RefTimer;
             _target = Instantiate(_progress[_progressIndex], Vector2.zero, Quaternion.identity);
+            _param = _target.GetComponentInChildren<CubismParameter>();
             UpdateUI();
+        }
+
+        public void IncreaseAnimValue(float mult)
+        {
+            if (_animGoUp)
+            {
+                _animValue += mult;
+                if (_animValue > 1f)
+                {
+                    _animValue = 1f;
+                    _animGoUp = false;
+                }
+            }
+            else
+            {
+                _animValue -= mult;
+                if (_animValue < -1f)
+                {
+                    _animValue = -1f;
+                    _animGoUp = true;
+                }
+            }
         }
 
         private void Update()
         {
+            IncreaseAnimValue(Time.deltaTime);
+
             if (_isActive && !_didGameEnd)
             {
                 _timer -= Time.deltaTime;
@@ -53,6 +84,11 @@ namespace VoreBunny
                 }
                 UpdateUI();
             }
+        }
+
+        private void LateUpdate()
+        {
+            _param.Value = _animValue;
         }
 
         private void UpdateUI()
@@ -68,6 +104,7 @@ namespace VoreBunny
                 _instructions.SetActive(false);
 
                 _clickCount++;
+                IncreaseAnimValue(.1f);
 
                 _progressBar.localScale = new(1f - ((_progressIndex * RefClickCount + _clickCount) / (float)(RefClickCount * _progress.Length)), 1f, 1f);
                 if (_clickCount == RefClickCount)
@@ -88,6 +125,8 @@ namespace VoreBunny
                         t = _progress[_progressIndex];
                     }
                     _target = Instantiate(t, Vector2.zero, Quaternion.identity);
+                    _param = _target.GetComponentInChildren<CubismParameter>();
+                    _animValue = 0f;
                 }
             }
         }
