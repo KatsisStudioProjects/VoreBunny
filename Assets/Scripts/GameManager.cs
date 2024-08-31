@@ -36,6 +36,12 @@ namespace VoreBunny
         [SerializeField]
         private Animator _anim;
 
+        [SerializeField]
+        private AudioClip[] _victoryAudio, _defeatAudio;
+
+        [SerializeField]
+        private AudioClip[] _clips;
+
         private AudioSource _source;
 
         private GameObject _target;
@@ -58,6 +64,8 @@ namespace VoreBunny
 
         private bool _canReset;
 
+        private float _audioTimer;
+
         private void Awake()
         {
             _source = GetComponent<AudioSource>();
@@ -65,6 +73,46 @@ namespace VoreBunny
             _target = Instantiate(_progress[_progressIndex], Vector2.zero, Quaternion.identity);
             _param = _target.GetComponentInChildren<CubismParameter>();
             UpdateUI();
+
+            _audioTimer = Random.Range(1f, 3f);
+        }
+
+        private void Update()
+        {
+            IncreaseAnimValue(Time.deltaTime / 2f * (_gotLastClick > 0 ? 3f : 1f));
+            if (_gotLastClick > 0) _gotLastClick--;
+
+            if (_isActive && !_didGameEnd)
+            {
+                _timer -= Time.deltaTime;
+                if (_timer <= 0f)
+                {
+                    _didGameEnd = true;
+                    _canvas.SetActive(false);
+                    StartCoroutine(WaitAndDo(.8f, () =>
+                    {
+                        _victoryText.text = "You got digested";
+                        Destroy(_target);
+                        _target = Instantiate(_loose, Vector2.zero, Quaternion.identity);
+                        _param = _target.GetComponentInChildren<CubismParameter>();
+                        foreach (var a in _defeatAudio) _source.PlayOneShot(a, 3f);
+                    }));
+                    StartCoroutine(AllowReset());
+                }
+                UpdateUI();
+            }
+
+            _audioTimer -= Time.deltaTime;
+            if (_audioTimer <= 0f)
+            {
+                _source.PlayOneShot(_clips[Random.Range(0, _clips.Length)], 3f);
+                _audioTimer = Random.Range(1f, 3f);
+            }
+        }
+
+        private void LateUpdate()
+        {
+            _param.Value = _animValue;
         }
 
         public void IncreaseAnimValue(float mult)
@@ -89,36 +137,6 @@ namespace VoreBunny
                     if (!_didGameEnd) _source.PlayOneShot(_tummyNoises[Random.Range(0, _tummyNoises.Length)]);
                 }
             }
-        }
-
-        private void Update()
-        {
-            IncreaseAnimValue(Time.deltaTime / 2f * (_gotLastClick > 0 ? 3f : 1f));
-            if (_gotLastClick > 0) _gotLastClick--;
-
-            if (_isActive && !_didGameEnd)
-            {
-                _timer -= Time.deltaTime;
-                if (_timer <= 0f)
-                {
-                    _didGameEnd = true;
-                    _canvas.SetActive(false);
-                    StartCoroutine(WaitAndDo(.8f, () =>
-                    {
-                        _victoryText.text = "You got digested";
-                        Destroy(_target);
-                        _target = Instantiate(_loose, Vector2.zero, Quaternion.identity);
-                        _param = _target.GetComponentInChildren<CubismParameter>();
-                    }));
-                    StartCoroutine(AllowReset());
-                }
-                UpdateUI();
-            }
-        }
-
-        private void LateUpdate()
-        {
-            _param.Value = _animValue;
         }
 
         private void UpdateUI()
@@ -164,7 +182,11 @@ namespace VoreBunny
                         _animValue = 0f;
                         StartCoroutine(WaitAndDo(.8f, () =>
                         {
-                            if (_progressIndex == _progress.Length) _victoryText.text = "You escaped!";
+                            if (_progressIndex == _progress.Length)
+                            {
+                                foreach (var a in _victoryAudio) _source.PlayOneShot(a, 3f);
+                                _victoryText.text = "You escaped!";
+                            }
                             Destroy(_target);
                             _target = Instantiate(t, Vector2.zero, Quaternion.identity);
                             _param = _target.GetComponentInChildren<CubismParameter>();

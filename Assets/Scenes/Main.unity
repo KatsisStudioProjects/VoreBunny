@@ -771,6 +771,21 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 441b7d44ba37afe4a8fcb726dc16a0ae, type: 3}
   - {fileID: 8300000, guid: 889b6c04e1061fa43ae1dc88e520be64, type: 3}
   _anim: {fileID: 2023486942}
+  _victoryAudio:
+  - {fileID: 8300000, guid: 75a25c9d352a2b340871e6e1ed72c23e, type: 3}
+  - {fileID: 8300000, guid: 6b4752b4fb6699e428c348a148d6c73b, type: 3}
+  _defeatAudio:
+  - {fileID: 8300000, guid: b1e94b37787ee0c4e91a50a4b467b8b3, type: 3}
+  _clips:
+  - {fileID: 8300000, guid: 75a25c9d352a2b340871e6e1ed72c23e, type: 3}
+  - {fileID: 8300000, guid: ddfba687b4c7e384999f430e1ef92019, type: 3}
+  - {fileID: 8300000, guid: 2c935ae0db1fadf4a848bd56d43298c4, type: 3}
+  - {fileID: 8300000, guid: 532558fb9693eba4499d1cfac05f927e, type: 3}
+  - {fileID: 8300000, guid: 2d73917b239951a4aa7d71efc17aa546, type: 3}
+  - {fileID: 8300000, guid: 7b598e81dceabaa4a96644f76168d38b, type: 3}
+  - {fileID: 8300000, guid: 52913297cb5b4f647bdba5993a11403a, type: 3}
+  - {fileID: 8300000, guid: eee401e44454f4f4e87d138f9e6469d6, type: 3}
+  - {fileID: 8300000, guid: 47a8b0c8461b67f4c8d1befe86e8ca45, type: 3}
 --- !u!4 &967273522
 Transform:
   m_ObjectHideFlags: 0
