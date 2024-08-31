@@ -92,7 +92,7 @@ namespace VoreBunny
 
         private void UpdateUI()
         {
-            _timerText.text = $"{_timer:00}";
+            _timerText.text = $"Time to get digested: {_timer:00}";
         }
 
         public void OnAction(InputAction.CallbackContext value)
@@ -100,7 +100,6 @@ namespace VoreBunny
             if (value.phase == InputActionPhase.Started && !_didGameEnd)
             {
                 if (!_isActive) _isActive = true;
-                _instructions.SetActive(false);
 
                 _clickCount++;
                 IncreaseAnimValue(.1f);
