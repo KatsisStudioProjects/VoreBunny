@@ -640,6 +640,7 @@ GameObject:
   - component: {fileID: 967273522}
   - component: {fileID: 967273521}
   - component: {fileID: 967273520}
+  - component: {fileID: 967273523}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -755,6 +756,20 @@ MonoBehaviour:
   _instructions: {fileID: 1528666510}
   _progressBar: {fileID: 1591498761}
   _canvas: {fileID: 1539152148}
+  _victoryText: {fileID: 1023165993}
+  _tummyNoises:
+  - {fileID: 8300000, guid: 605c733747fef5249b52aa2fe573fd45, type: 3}
+  - {fileID: 8300000, guid: 994129c62b4007b438574ae3c326ea91, type: 3}
+  - {fileID: 8300000, guid: f6baab3485103654ea633828d98b3958, type: 3}
+  - {fileID: 8300000, guid: 867a4aff4d6000a4ab7e7ea30a220b84, type: 3}
+  - {fileID: 8300000, guid: 6c9d4c8b38d29b4428e10c034769c502, type: 3}
+  - {fileID: 8300000, guid: 28a28914e70c7eb44919e277e69a5497, type: 3}
+  - {fileID: 8300000, guid: 061430fb6dfd73f4781c0e051a98e48f, type: 3}
+  - {fileID: 8300000, guid: 8072208aeb6d89b40877f05227e28adb, type: 3}
+  - {fileID: 8300000, guid: 32928f1a9c5f99749a8c72c7b5ec2e98, type: 3}
+  - {fileID: 8300000, guid: ae7481a07cde1a442a7fc7c09eb6cc6a, type: 3}
+  - {fileID: 8300000, guid: 441b7d44ba37afe4a8fcb726dc16a0ae, type: 3}
+  - {fileID: 8300000, guid: 889b6c04e1061fa43ae1dc88e520be64, type: 3}
 --- !u!4 &967273522
 Transform:
   m_ObjectHideFlags: 0
@@ -770,6 +785,103 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &967273523
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 967273519}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 0.15
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1023165991
 GameObject:
   m_ObjectHideFlags: 0
@@ -782,7 +894,7 @@ GameObject:
   - component: {fileID: 1023165994}
   - component: {fileID: 1023165993}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: VictoryText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

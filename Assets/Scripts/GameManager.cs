@@ -28,6 +28,11 @@ namespace VoreBunny
         [SerializeField]
         private TMP_Text _victoryText;
 
+        [SerializeField]
+        private AudioClip[] _tummyNoises;
+
+        private AudioSource _source;
+
         private GameObject _target;
 
         private const float RefTimer = 20f;
@@ -48,6 +53,7 @@ namespace VoreBunny
 
         private void Awake()
         {
+            _source = GetComponent<AudioSource>();
             _timer = RefTimer;
             _target = Instantiate(_progress[_progressIndex], Vector2.zero, Quaternion.identity);
             _param = _target.GetComponentInChildren<CubismParameter>();
@@ -63,6 +69,7 @@ namespace VoreBunny
                 {
                     _animValue = 1f;
                     _animGoUp = false;
+                    _source.PlayOneShot(_tummyNoises[Random.Range(0, _tummyNoises.Length)]);
                 }
             }
             else
@@ -72,6 +79,7 @@ namespace VoreBunny
                 {
                     _animValue = -1f;
                     _animGoUp = true;
+                    _source.PlayOneShot(_tummyNoises[Random.Range(0, _tummyNoises.Length)]);
                 }
             }
         }
