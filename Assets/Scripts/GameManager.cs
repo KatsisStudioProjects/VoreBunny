@@ -1,5 +1,7 @@
 using Live2D.Cubism.Core;
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -41,6 +43,7 @@ namespace VoreBunny
 
         [SerializeField]
         private AudioClip[] _clips;
+        private List<AudioClip> _clipsL;
 
         private AudioSource _source;
 
@@ -73,6 +76,7 @@ namespace VoreBunny
             _target = Instantiate(_progress[_progressIndex], Vector2.zero, Quaternion.identity);
             _param = _target.GetComponentInChildren<CubismParameter>();
             UpdateUI();
+            _clipsL = _clips.ToList();
 
             _audioTimer = Random.Range(1f, 3f);
         }
@@ -105,7 +109,11 @@ namespace VoreBunny
             _audioTimer -= Time.deltaTime;
             if (_audioTimer <= 0f)
             {
-                _source.PlayOneShot(_clips[Random.Range(0, _clips.Length)], 3f);
+                var index = Random.Range(1, _clipsL.Count);
+                var c = _clipsL[index];
+                _source.PlayOneShot(c, 3f);
+                _clipsL.RemoveAt(index);
+                _clipsL.Insert(0, c);
                 _audioTimer = Random.Range(1f, 3f);
             }
         }
