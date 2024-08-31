@@ -76,7 +76,7 @@ namespace VoreBunny
                 {
                     _animValue = 1f;
                     _animGoUp = false;
-                    _source.PlayOneShot(_tummyNoises[Random.Range(0, _tummyNoises.Length)]);
+                    if (!_didGameEnd) _source.PlayOneShot(_tummyNoises[Random.Range(0, _tummyNoises.Length)]);
                 }
             }
             else
@@ -86,7 +86,7 @@ namespace VoreBunny
                 {
                     _animValue = -1f;
                     _animGoUp = true;
-                    _source.PlayOneShot(_tummyNoises[Random.Range(0, _tummyNoises.Length)]);
+                    if (!_didGameEnd) _source.PlayOneShot(_tummyNoises[Random.Range(0, _tummyNoises.Length)]);
                 }
             }
         }
@@ -103,9 +103,9 @@ namespace VoreBunny
                 {
                     _didGameEnd = true;
                     _canvas.SetActive(false);
-                    _victoryText.text = "You got digested";
                     StartCoroutine(WaitAndDo(.8f, () =>
                     {
+                        _victoryText.text = "You got digested";
                         Destroy(_target);
                         _target = Instantiate(_loose, Vector2.zero, Quaternion.identity);
                         _param = _target.GetComponentInChildren<CubismParameter>();
@@ -128,13 +128,13 @@ namespace VoreBunny
 
         public void OnAction(InputAction.CallbackContext value)
         {
-            if (value.phase == InputActionPhase.Started && !_didGameEnd)
+            if (value.phase == InputActionPhase.Started)
             {
                 if (_canReset)
                 {
                     SceneManager.LoadScene("Main");
                 }
-                else
+                else if (!_didGameEnd)
                 {
                     if (!_isActive) _isActive = true;
 
@@ -155,7 +155,6 @@ namespace VoreBunny
                             t = _win;
                             _didGameEnd = true;
                             _canvas.SetActive(false);
-                            _victoryText.text = "You escaped!";
                             StartCoroutine(AllowReset());
                         }
                         else
@@ -165,6 +164,7 @@ namespace VoreBunny
                         _animValue = 0f;
                         StartCoroutine(WaitAndDo(.8f, () =>
                         {
+                            if (_progressIndex == _progress.Length) _victoryText.text = "You escaped!";
                             Destroy(_target);
                             _target = Instantiate(t, Vector2.zero, Quaternion.identity);
                             _param = _target.GetComponentInChildren<CubismParameter>();
