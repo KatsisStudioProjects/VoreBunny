@@ -1,5 +1,4 @@
 using Live2D.Cubism.Core;
-using Live2D.Cubism.Framework;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
