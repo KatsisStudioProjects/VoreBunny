@@ -13,6 +13,15 @@
                     "processors": "",
                     "interactions": "Hold",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Interact1",
+                    "type": "Button",
+                    "id": "e6b08da5-5d1e-4857-b256-3dce53e6ff57",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "Hold",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -62,8 +71,8 @@
                 },
                 {
                     "name": "",
-                    "id": "657ea018-42fa-4828-80f8-7b9ed876a247",
-                    "path": "<Keyboard>/x",
+                    "id": "8dfac762-9e5e-43cb-b1b6-d2dffc89dc7b",
+                    "path": "<Keyboard>/z",
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
@@ -73,12 +82,12 @@
                 },
                 {
                     "name": "",
-                    "id": "8dfac762-9e5e-43cb-b1b6-d2dffc89dc7b",
-                    "path": "<Keyboard>/z",
+                    "id": "4498240a-3629-4e8c-b14f-9c8814876b36",
+                    "path": "<Keyboard>/x",
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
-                    "action": "Interact",
+                    "action": "Interact1",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
