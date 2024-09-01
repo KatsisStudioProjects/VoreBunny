@@ -1312,7 +1312,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Spam spacebar to escape
+  m_text: Spam spacebar | x | c to escape
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a9f65b3eb217ba34bbcb5de8e25ee457, type: 2}
   m_sharedMaterial: {fileID: 5978713897333605514, guid: a9f65b3eb217ba34bbcb5de8e25ee457, type: 2}
