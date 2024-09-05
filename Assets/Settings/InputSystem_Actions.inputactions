@@ -82,6 +82,17 @@
                 },
                 {
                     "name": "",
+                    "id": "c8f542e9-f11d-4351-951e-e6451a96a99d",
+                    "path": "<Touchscreen>/Press",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Touch",
+                    "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "4498240a-3629-4e8c-b14f-9c8814876b36",
                     "path": "<Keyboard>/x",
                     "interactions": "",
